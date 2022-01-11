@@ -1,9 +1,9 @@
 <template>
-  <div id="login">
-    <h1>login</h1>
+  <div id="create">
+    <h1>create</h1>
   </div>
 </template>
 
 <script src="./template.js"></script>
-<style src="./template.css"></style>
+<style lang='less' src="./template.less"></style>
 

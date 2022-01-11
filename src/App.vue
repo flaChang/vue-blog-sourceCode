@@ -2,7 +2,7 @@
   <div id="nav">
     <router-link to="/">Home</router-link>
     |
-    <router-link to="/about">About</router-link>
+    <router-link to="/create">About</router-link>
   </div>
   <router-view/>       <!--使用vue router的地方-->
 </template>
