@@ -1,6 +1,6 @@
 <template>
   <div id="index">
-    <h1>index</h1>
+    <el-button>index</el-button>
   </div>
 </template>
 
