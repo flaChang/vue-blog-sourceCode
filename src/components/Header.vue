@@ -4,8 +4,8 @@
       <h1>Share our knowledge</h1>
       <p>精品博客汇聚</p>
       <div class="btns">
-        <el-button>立即登录</el-button>
-        <el-button>注册账号</el-button>
+        <router-link to="/login"><el-button>立即登录</el-button></router-link>
+        <router-link to="/register"><el-button>注册账号</el-button></router-link>
       </div>
     </template>
     <template v-if="isLogin">
@@ -27,9 +27,6 @@
 <script>
 import {useStore} from 'vuex'
 import {computed} from 'vue'
-import auth from '@/api/auth'
-
-window.auth = auth
 
 export default {
   created() {    //尽早的获取数据，ajax
@@ -54,6 +51,7 @@ export default {
 
 @import "../assets/base.less";
 
+a{text-decoration: none;}
 header.no-login {
   padding: 0 12% 30px 12%;
   background: @bgColor;
