@@ -7,39 +7,48 @@ import Login from '../views/Login/template.vue'
 import My from '../views/My/template.vue'
 import Register from '../views/Register/template.vue'
 import User from '../views/User/template.vue'
+import store from '../store/modules/auth/index'
 
 const routes = [
   {
     path: '/',
-    component: Index
+    component: Index,
+    meta: { requiresAuth: false }
   },
   {
     path: '/create',
-    component: Create
+    component: Create,
+    meta: { requiresAuth: true }
   },
   {
-    path: '/detail',
-    component: Detail
+    path: '/detail/:blogId',
+    component: Detail,
+    meta: { requiresAuth: false }
   },
   {
-    path: '/edit',
-    component: Edit
+    path: '/edit/:blogId',
+    component: Edit,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
-    component: Login
+    component: Login,
+    meta: { requiresAuth: false }
   },
   {
     path: '/my',
-    component: My
+    component: My,
+    meta: { requiresAuth: true }
   },
   {
     path: '/register',
-    component: Register
+    component: Register,
+    meta: { requiresAuth: false }
   },
   {
-    path: '/user',
-    component: User
+    path: '/user/:userId',
+    component: User,
+    meta: { requiresAuth: false }
   }
 ]
 
@@ -48,4 +57,12 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to,from)=>{
+  if(to.meta.requiresAuth && !store.getters.isLogin){
+    return{
+      path:'/login',
+      query:{redirect:to.fullPath}
+    }
+  }
+})
 export default router
