@@ -14,7 +14,7 @@ html, body, #app {
 .el-button {
   color: @themeColor!important;
   border: 1px solid @themeLighterColor !important;
-  background: none;
+  background: #fff !important;
   border-radius: 4px;
 }
 
@@ -27,8 +27,9 @@ html, body, #app {
 
 
 .el-button:hover {
-  color: #fff;
-  background-color: @themeLighterColor ;
+  color: #fff !important;
+  background-color: @themeLighterColor !important;
+  border-color: #fff !important;
 }
 
 .el-input.is-active .el-input__inner, .el-input__inner:focus, .el-textarea__inner:focus {
