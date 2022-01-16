@@ -12,7 +12,7 @@ export default {
     onLogin() {setTimeout(()=>{
       this.login({username: this.username, password: this.password})
         .then(() => {
-          this.$router.push({path: '/'}).then(()=>console.log("hi"))
+          this.$router.push({path: this.$router.query.redirect || '/'}).then(()=>console.log("hi"))
         })
     })
     }

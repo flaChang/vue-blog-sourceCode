@@ -57,12 +57,16 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to,from)=>{
-  if(to.meta.requiresAuth && !store.getters.isLogin){
-    return{
-      path:'/login',
-      query:{redirect:to.fullPath}
-    }
+router.beforeEach((to, from) => {
+  if (to.meta.requiresAuth) {
+    store.dispatch('checkLogin').then(isLogin => {
+      if (!isLogin) {
+        return {
+          path: '/login',
+          query: {redirect: to.fullPath}
+        }
+      }
+    })
   }
 })
 export default router
