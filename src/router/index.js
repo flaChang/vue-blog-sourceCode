@@ -1,53 +1,45 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Index from '../views/Index/template.vue'
-import Create from '../views/Create/template.vue'
-import Detail from '../views/Detail/template.vue'
-import Edit from '../views/Edit/template.vue'
-import Login from '../views/Login/template.vue'
-import My from '../views/My/template.vue'
-import Register from '../views/Register/template.vue'
-import User from '../views/User/template.vue'
 import store from '../store/modules/auth/index'
 
 const routes = [
   {
     path: '/',
-    component: Index,
+    component:()=>import('@/views/Index/template.vue'),
     meta: { requiresAuth: false }
   },
   {
     path: '/create',
-    component: Create,
+    component: ()=>import("@/views/Create/template.vue"),
     meta: { requiresAuth: true }
   },
   {
     path: '/detail/:blogId',
-    component: Detail,
+    component: ()=>import('@/views/Detail/template.vue'),
     meta: { requiresAuth: false }
   },
   {
     path: '/edit/:blogId',
-    component: Edit,
+    component: ()=>import('@/views/Edit/template.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/login',
-    component: Login,
+    component: ()=>import('@/views/Login/template.vue'),
     meta: { requiresAuth: false }
   },
   {
     path: '/my',
-    component: My,
+    component: ()=>import('@/views/My/template.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/register',
-    component: Register,
+    component: ()=>import('@/views/Register/template.vue'),
     meta: { requiresAuth: false }
   },
   {
     path: '/user/:userId',
-    component: User,
+    component: ()=>import('@/views/User/template.vue'),
     meta: { requiresAuth: false }
   }
 ]
