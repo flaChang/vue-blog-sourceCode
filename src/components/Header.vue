@@ -4,13 +4,23 @@
       <h1>Share our knowledge</h1>
       <p>精品博客汇聚</p>
       <div class="btns">
-        <router-link to="/login"><el-button>立即登录</el-button></router-link>
-        <router-link to="/register"><el-button>注册账号</el-button></router-link>
+        <router-link to="/login">
+          <el-button>立即登录</el-button>
+        </router-link>
+        <router-link to="/register">
+          <el-button>注册账号</el-button>
+        </router-link>
       </div>
     </template>
     <template v-if="isLogin">
-      <h1>Share our knowledge</h1>
-      <i class="edit el-icon-edit"></i>
+      <h1>
+        <router-link to="/">Share our knowledge</router-link>
+      </h1>
+      <router-link to="/create">
+        <el-icon class="edit">
+          <Edit/>
+        </el-icon>
+      </router-link>
       <div class="user">
         <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username">
         <ul>
@@ -27,8 +37,10 @@
 <script>
 import {useStore} from 'vuex'
 import {computed} from 'vue'
+import {Edit} from "@element-plus/icons-vue"
 
 export default {
+  components: {Edit},
   created() {    //尽早的获取数据，ajax
     this.checkLogin().then(isLogin => {
       if (isLogin) {return}
@@ -37,7 +49,7 @@ export default {
   setup() {
     const store = useStore()
     return {
-      onLogout: ()=>store.dispatch('logout'),
+      onLogout: () => store.dispatch('logout'),
       isLogin: computed(() => store.getters.isLogin),
       user: computed(() => store.getters.user),
       checkLogin: () => store.dispatch('checkLogin'),
@@ -51,7 +63,10 @@ export default {
 
 @import "../assets/base.less";
 
-a{text-decoration: none;}
+a {
+  text-decoration: none;
+}
+
 header.no-login {
   padding: 0 12% 30px 12%;
   background: @bgColor;
@@ -59,10 +74,12 @@ header.no-login {
   justify-items: center;
 
   h1 {
-    color: #fff;
+
     font-size: 40px;
     margin: 60px 0 0 0;
     text-transform: uppercase;
+    color: #fff;
+
   }
 
   p {
@@ -88,10 +105,13 @@ header.login {
   h1 {
     margin: 0;
     padding: 0;
-    color: #fff;
     font-size: 40px;
     text-transform: uppercase;
     flex: 1;
+
+    a {
+      color: #fff;
+    }
   }
 
   .edit {
@@ -108,8 +128,9 @@ header.login {
   }
 
   .user {
-    position:relative;
-    ul{
+    position: relative;
+
+    ul {
       display: none;
       position: absolute;
       right: 0;
@@ -117,18 +138,21 @@ header.login {
       border: 1px solid #eaeaea;
       margin: 0;
       padding: 0;
-      background-color:#fff;
-      a{
+      background-color: #fff;
+
+      a {
         text-decoration: none;
         color: #333;
         font-size: 12px;
         display: block;
         padding: 5px 10px;
-        &:hover{
+
+        &:hover {
           background-color: #eaeaea;
         }
       }
     }
+
     &:hover ul {
       display: block;
     }

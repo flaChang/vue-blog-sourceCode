@@ -1,15 +1,23 @@
 <template>
   <div id="index">
-   <section class="blog-posts">
-     <div class="item">
-       <figure class="avatar">
-         <img src="https://s.gravatar.com/avatar/95aeb5bdd64a6aa295cacaa5c5e6a378?s=80" alt="">
-         <figcaption>simon</figcaption>
-       </figure>
-       <h3>for test only<span>create time</span></h3>
-       <p>details</p>
-     </div>
-   </section>
+    <section class="blog-posts">
+      <router-link class="item" v-for="blog in blogs" :to="`/detail/${blog.id}`">
+        <figure class="avatar">
+          <img :src="blog.user.avatar" :alt="blog.user.username">
+          <figcaption>{{ blog.user.username }}</figcaption>
+        </figure>
+        <h3>{{ blog.title }}<span>{{ blog.createdAt }}</span></h3>
+        <p>{{ blog.description }}</p>
+      </router-link>
+    </section>
+    <section class="pagination">
+      <div class="block">
+        <el-pagination
+            @current-change="onPageChange"
+            layout="prev, pager, next"
+            :total="total"></el-pagination>
+      </div>
+    </section>
   </div>
 </template>
 

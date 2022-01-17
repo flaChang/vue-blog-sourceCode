@@ -1,13 +1,11 @@
 <template>
   <div id="detail">
     <section class="user-info">
-      <img src="https://s.gravatar.com/avatar/95aeb5bdd64a6aa295cacaa5c5e6a378?s=80" alt="" class="avatar">
-      <h3>CSS选择器以及它们的优先级</h3>
-      <p><router-link to="/user">simon</router-link> create time</p>
+      <img :src="user.avatar" :alt="user.username" :title='user.username' class="avatar">
+      <h3>{{title}}</h3>
+      <p><router-link :to="`/user/${user.id}`">{{ user.username }}</router-link>发布于{{createAt}}</p>
     </section>
-    <section class="article">
-      TEST
-      testing
+    <section class="article" v-html="markdown">
     </section>
   </div>
 </template>

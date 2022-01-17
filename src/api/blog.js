@@ -2,10 +2,10 @@ import request from '@/helpers/request'
 
 const URL = {
   GET_LIST:'/blog',
-  GET_DETAIL:'/blog:blogId',
+  GET_DETAIL:'/blog/:blogId',
   CREATE:'/blog',
   UPDATE:'/blog/:blogId',
-  DELETE:'/blog:blogId'
+  DELETE:'/blog/:blogId'
 }
 
 export default {
