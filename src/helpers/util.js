@@ -1,11 +1,14 @@
+import {options} from "marked"
+
 function friendlyDate(dateStr){
   let dateObj = typeof dateStr ==='object' ? dateStr :new Date(dateStr)
   let time = dateObj.getTime()
   let now = Date.now()
-  let space = now - time
+  let space = now-time
   let str =''
+
   switch (true){
-    case space<60000:
+    case space < 60000:
       str = '刚刚'
       break
     case space <1000*3600:
@@ -18,4 +21,10 @@ function friendlyDate(dateStr){
       str = Math.floor(space/(1000*3600*24)) + '天前'
   }
   return str
+}
+
+export default {
+  install:(app,options)=>{
+    app.config.globalProperties.friendlyDate = friendlyDate
+  }
 }

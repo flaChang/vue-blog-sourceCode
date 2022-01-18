@@ -7,7 +7,7 @@ export default {
       title: '',
       rawContent: '',
       user: {},
-      createAt: ''
+      createdAt: ''
     }
   },
   created() {
@@ -16,7 +16,7 @@ export default {
       .then(res => {
         this.title = res.data.title
         this.rawContent = res.data.content
-        this.createAt = res.data.createAt
+        this.createdAt = res.data.createdAt
         this.user = res.data.user
       })
   },

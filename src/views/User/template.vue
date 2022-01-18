@@ -1,9 +1,36 @@
 <template>
-  <div id="user">
-    <h1>user</h1>
+  <div id="my">
+    <section class="user-info">
+      <img :src="user.avatar" :alt="user.username" class="avatar">
+      <h3>{{ user.username }}</h3>
+    </section>
+    <section>
+      <router-link class="item" v-for="blog in blogs" :key="blog.id" :to="`/detail/${blog.id}`">
+        <div class="date">
+          <span class="day">{{ splitDate(blog.createdAt).date }}</span>
+          <span class="month">{{ splitDate(blog.createdAt).month }}月</span>
+          <span class="year">{{ splitDate(blog.createdAt).year }}</span>
+        </div>
+        <h3>{{ blog.title }}</h3>
+        <p>{{blog.description}}</p>
+      </router-link>
+    </section>
+    <section class="pagination">
+      <div class="block">
+        <el-pagination
+            :current-page="page"
+            @current-change="onPageChange"
+            layout="prev, pager, next"
+            :total="total"></el-pagination>
+      </div>
+    </section>
   </div>
 </template>
 
 <script src="./template.js"></script>
-<style src="./template.css"></style>
+
+<style src="../My/template.less" lang="less"></style>
+
+
+
 
