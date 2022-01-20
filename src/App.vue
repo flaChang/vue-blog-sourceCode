@@ -21,6 +21,10 @@ html, body, #app{
   height:100%;
 }
 #app {
+  overflow: auto;
+  &::-webkit-scrollbar{
+    display: none;
+  }
   display: grid;
   grid-template-columns: 12% auto 12%;
   grid-template-rows: auto 1fr auto;
