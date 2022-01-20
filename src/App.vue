@@ -51,4 +51,17 @@ html, body, #app{
     }
   }
 }
+
+@media(max-width:500px) {
+  #app{display: flex;flex-direction: column;overflow-x: hidden;
+    justify-content: space-between;
+    #main{padding:20px;
+      }
+  #footer{width:100%;}
+    #header.no-login{display: flex;flex-direction: column;
+      justify-content: center;align-items: center;
+    h1{text-align: center;}
+    }
+  }
+}
 </style>

@@ -5,11 +5,11 @@ export default {
     return {
       blogs: [],
       total: 0,
-      page: 1
+      page: 2
     }
   },
   created() {
-    this.page = parseInt(this.$route.query.page) || 1
+    this.page = parseInt(this.$route.query.page) || 2
     blog.getIndexBlogs({page:this.page}).then(res => {
       this.blogs = res.data
       this.total = res.total

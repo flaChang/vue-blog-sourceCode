@@ -10,5 +10,5 @@
 </template>
 
 <script src="./template.js"></script>
-<style src="./template.css"></style>
+<style src="../Login/template.less" lang="less"></style>
 

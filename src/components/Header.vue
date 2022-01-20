@@ -66,7 +66,6 @@ export default {
 a {
   text-decoration: none;
 }
-
 header.no-login {
   padding: 0 12% 30px 12%;
   background: @bgColor;
@@ -74,12 +73,10 @@ header.no-login {
   justify-items: center;
 
   h1 {
-
     font-size: 40px;
     margin: 60px 0 0 0;
     text-transform: uppercase;
     color: #fff;
-
   }
 
   p {
@@ -101,6 +98,7 @@ header.login {
   display: flex;
   align-items: center;
   background: @bgColor;
+
 
   h1 {
     margin: 0;
@@ -156,6 +154,10 @@ header.login {
     &:hover ul {
       display: block;
     }
+  }
+  @media(max-width:500px){
+    header.login{display: inline-block;}
+    svg{right: 0;bottom:0;}
   }
 }
 
